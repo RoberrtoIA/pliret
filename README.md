@@ -6,15 +6,15 @@ Esta API proporciona una API RESTful para evaluar el desempeño de los empleados
 
 ## Objetivos
 
-* Proporcionar una API RESTful para evaluar el desempeño de los empleados.
-* Usar tokens de acceso para la autenticación y autorización.
-* Incluir pruebas unitarias para garantizar la calidad del código.
+-   Proporcionar una API RESTful para evaluar el desempeño de los empleados.
+-   Usar tokens de acceso para la autenticación y autorización.
+-   Incluir pruebas unitarias para garantizar la calidad del código.
 
 ## Características
 
-* Seguridad con tokens de acceso.
-* Pruebas unitarias.
-* Documentación.
+-   Seguridad con tokens de acceso.
+-   Pruebas unitarias.
+-   Documentación.
 
 ## Documentación
 
@@ -26,10 +26,10 @@ robertoantoniomoreno1999@gmail.com
 
 ## Contenido
 
-* [Demostración de la API](#api-demo)
-* [Uso de la demostración](#demo-usage)
-* [Instalación](#install)
-* [Seeder de demostración](#demo-seeder)
+-   [Demostración de la API](#api-demo)
+-   [Uso de la demostración](#demo-usage)
+-   [Instalación](#install)
+-   [Seeder de demostración](#demo-seeder)
 
 ## Demostración de la API
 
@@ -69,7 +69,8 @@ php artisan migrate --seed
 
 El seeder es necesario para el conjunto de datos inicial
 
-### Demo Seeder 
+### Demo Seeder
+
 Puedes usar el seeder de demostración para el contexto de la demostracion de la [API Demo](#api-demo) .
 
 ```bash
