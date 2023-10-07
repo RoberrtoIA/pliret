@@ -1,26 +1,59 @@
 # API de evaluación de empleados
 
-**Proyecto de graduación**
+**Autor:**
 
-Esta API proporciona una API RESTful para evaluar el desempeño de los empleados de una empresa. La API está construida con Laravel 9 y utiliza tokens de acceso para la autenticación y autorización.
+robertoantoniomoreno1999@gmail.com
 
-## Objetivos
+## Content
+- [API Demo](#api-demo)
+- [Demo Usage](#demo-usage)
+- [Install](#install)
+- [Demo Seeder](#demo-seeder)
 
-* Proporcionar una API RESTful para evaluar el desempeño de los empleados.
-* Usar tokens de acceso para la autenticación y autorización.
-* Incluir pruebas unitarias para garantizar la calidad del código.
 
-## Características
+## API Demo
 
-* Seguridad con tokens de acceso.
-* Pruebas unitarias.
-* Documentación.
+You can find a [Postman](https://www.postman.com/) collection for API demo in `demo` folder.
 
-## Uso
+[Import json file](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-postman-data).
 
-La API se puede usar para evaluar el desempeño de los empleados de una empresa. Los endpoints de la API se pueden usar para crear, actualizar, eliminar y consultar empleados y evaluaciones.
+## Demo Usage
 
-## Documentación
+Login with all demo users (see [Demo Seeder](#demo-seeder)) and fill the
+respective `token` fields in the `collection variables`.
 
-La documentación de la API se encuentra en el siguiente enlace:
- 
+## Install
+
+PHP 8.1+, composer and MySQL8+ are required.
+
+Clone the project and install dependencies.
+
+```bash
+git clone https://gitlab.com/applaudo-php-tp-2022/final-project
+cd final-project
+composer install
+```
+
+Copy `.env.example` and fill environment variables as needed.
+
+```bash
+cp .env.example .env
+```
+
+Run following commands
+
+```bash
+php artisan key:generate
+php artisan storage:link
+php artisan migrate --seed
+```
+
+Seed is required for initial data set.
+
+### Demo Seeder 
+You can use demo seeder for [API Demo](#api-demo) context.
+
+```bash
+php artisan migrate:fresh \
+    --seeder=Database\\Seeders\\Sample\\SampleSeeder
+```
