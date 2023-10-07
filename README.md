@@ -4,29 +4,28 @@
 
 robertoantoniomoreno1999@gmail.com
 
-## Content
-- [API Demo](#api-demo)
-- [Demo Usage](#demo-usage)
-- [Install](#install)
-- [Demo Seeder](#demo-seeder)
+## Contenido
 
+* [Demostración de la API](#api-demo)
+* [Uso de la demostración](#demo-usage)
+* [Instalación](#install)
+* [Seeder de demostración](#demo-seeder)
 
-## API Demo
+## Demostración de la API
 
-You can find a [Postman](https://www.postman.com/) collection for API demo in `demo` folder.
+Puedes encontrar una colección de Postman para la demostración de la API en la carpeta `demo`.
 
-[Import json file](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-postman-data).
+[Importa el archivo JSON](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-postman-data).
 
-## Demo Usage
+## Uso de la demostración
 
-Login with all demo users (see [Demo Seeder](#demo-seeder)) and fill the
-respective `token` fields in the `collection variables`.
+Inicia sesión con todos los usuarios de demostración (ver [Seeder de demostración](#demo-seeder)) y rellena los campos `token` correspondientes en las `variables de colección`.
 
-## Install
+## Instalación
 
-PHP 8.1+, composer and MySQL8+ are required.
+Se requieren PHP 8.1+, Composer y MySQL 8+.
 
-Clone the project and install dependencies.
+Clona el proyecto e instala las dependencias.
 
 ```bash
 git clone https://gitlab.com/applaudo-php-tp-2022/final-project
@@ -34,13 +33,13 @@ cd final-project
 composer install
 ```
 
-Copy `.env.example` and fill environment variables as needed.
+Copiar el archivo `.env.example` y rellenar con las variables de entorno requeridas.
 
 ```bash
 cp .env.example .env
 ```
 
-Run following commands
+Ejecuta los siguientes comandos
 
 ```bash
 php artisan key:generate
@@ -48,10 +47,10 @@ php artisan storage:link
 php artisan migrate --seed
 ```
 
-Seed is required for initial data set.
+El seeder es necesario para el conjunto de datos inicial
 
 ### Demo Seeder 
-You can use demo seeder for [API Demo](#api-demo) context.
+Puedes usar el seeder de demostración para el contexto de la demostracion de la [API Demo](#api-demo) .
 
 ```bash
 php artisan migrate:fresh \
