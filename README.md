@@ -31,7 +31,7 @@ robertoantoniomoreno1999@gmail.com
 -   [Instalación](#install)
 -   [Seeder de demostración](#demo-seeder)
 
-## Demostración de la API
+## API Demo
 
 Puedes encontrar una colección de Postman para la demostración de la API en la carpeta `demo`.
 
