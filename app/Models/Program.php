@@ -17,4 +17,14 @@ class Program extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
+
+    public function executions()
+    {
+        return $this->hasMany(Execution::class);
+    }
 }
