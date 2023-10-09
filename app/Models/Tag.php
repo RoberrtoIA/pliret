@@ -10,4 +10,9 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function programs()
+    {
+        return $this->belongsToMany(Program::class);
+    }
 }
