@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Ability extends Model
 {
     public $timestamps = false;
 
     protected $fillable = ['name'];
 
-    public function abilities()
+    public function roles()
     {
-        return $this->belongsToMany(Ability::class);
+        return $this->belongsToMany(Role::class);
     }
 }
