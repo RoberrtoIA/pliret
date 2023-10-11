@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::name('api.v1.')->prefix('v1')->group(function () {
+
+    // Route::post('login', [AuthController::class, 'login'])->name('login');
+
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+
+        Route::post('users/create-employee-account', CreateEmployeeAccountController::class)
+            ->name('users.createEmployeeAccount')
+            ->middleware(['ability:manage_user_accounts']);
+    });
 });
