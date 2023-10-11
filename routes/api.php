@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
+use App\Http\Controllers\V1\User\CreateTraineeAccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,10 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
 
         Route::post('users/create-employee-account', CreateEmployeeAccountController::class)
             ->name('users.createEmployeeAccount')
+            ->middleware(['ability:manage_user_accounts']);
+
+        Route::post('users/create-trainee-account', CreateTraineeAccountController::class)
+            ->name('users.createTraineeAccount')
             ->middleware(['ability:manage_user_accounts']);
     });
 });
