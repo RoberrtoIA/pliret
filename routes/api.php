@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;

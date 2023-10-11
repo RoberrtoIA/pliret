@@ -48,4 +48,9 @@ class AuthController extends Controller
 
         $user->token = $token;
     }
+
+    protected function findUserByEmail(string $email): User|null
+    {
+        return User::where('email', $email)->with('roles')->first();
+    }
 }
