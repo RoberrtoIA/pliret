@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
         ]);
 
-        // User::factory()->create([
-        //     'name' => 'admin',
-        //     'email' => config('app.admin_email'),
-        //     'password' => config('app.admin_password')
-        // ])
-        //     ->roles()
-        //     ->attach(Role::where('name', 'manager')->first());
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => config('app.admin_email'),
+            'password' => config('app.admin_password')
+        ])
+            ->roles()
+            ->attach(Role::where('name', 'manager')->first());
     }
 }
