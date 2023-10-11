@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\V1\Auth\AuthController;
+use App\Http\Controllers\V1\ExecutionController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
 use App\Http\Controllers\V1\User\CreateTraineeAccountController;
 use Illuminate\Http\Request;
@@ -30,5 +31,13 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
         Route::post('users/create-trainee-account', CreateTraineeAccountController::class)
             ->name('users.createTraineeAccount')
             ->middleware(['ability:manage_user_accounts']);
+
+        Route::resource('executions', ExecutionController::class)
+            ->only(['index', 'show', 'store'])
+            ->middleware([
+                'ability:manage_executions'
+                    . ',see_program_content_details'
+                    . ',see_program_content'
+            ]);
     });
 });
