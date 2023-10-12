@@ -13,6 +13,10 @@ class Execution extends Model
 
     protected $fillable = ['program_id', 'start_date', 'end_date'];
 
+    protected $casts = [
+        'program_execution_content' => 'array',
+    ];
+
     public function program()
     {
         return $this->belongsTo(Program::class);

@@ -27,4 +27,12 @@ class Program extends Model
     {
         return $this->hasMany(Execution::class);
     }
+
+    public function developers()
+    {
+        return $this->belongsToMany(User::class, 'developers')
+            ->as('developer')
+            ->withPivot('active', 'created_at')
+            ->using(Developer::class);
+    }
 }
