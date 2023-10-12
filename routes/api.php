@@ -55,5 +55,9 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
                 'ability:manage_programs'
                     . ',add_program_content'
             ]);
+
+        // Route::resource('users', UserController::class)
+        //     ->only(['index', 'show', 'update', 'destroy'])
+        //     ->middleware(['ability:manage_user_accounts']);
     });
 });

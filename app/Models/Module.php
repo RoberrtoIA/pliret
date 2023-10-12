@@ -17,4 +17,14 @@ class Module extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function topics()
+    {
+        return $this->hasMany(Topic::class);
+    }
+
+    public function evaluation_criteria()
+    {
+        return $this->hasMany(EvaluationCriteria::class);
+    }
 }

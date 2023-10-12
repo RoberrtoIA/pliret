@@ -30,4 +30,17 @@ class UserService
 
         return $user;
     }
+
+    public function updateUser(FormRequest $request, User $user): User
+    {
+        $data = $request->validated();
+        /** @var User */
+        DB::transaction(function () use ($data, $user) {
+            $roles = $data['roles'] ?? null;
+            $user->fill($data)->save();
+            $this->userRoleService->syncUserRoles($user, $roles);
+        });
+
+        return $user;
+    }
 }
