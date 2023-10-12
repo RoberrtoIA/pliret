@@ -29,4 +29,9 @@ class Execution extends Model
             ->withPivot('score', 'active', 'created_at')
             ->using(Enrollment::class);
     }
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
 }

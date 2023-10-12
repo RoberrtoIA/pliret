@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\V1\Auth\AuthController;
+use App\Http\Controllers\V1\Execution\AssignUserModuleController;
 use App\Http\Controllers\V1\Execution\ExecutionEnrollTraineeController;
 use App\Http\Controllers\V1\ExecutionController;
 use App\Http\Controllers\V1\ProgramController;
@@ -68,5 +69,10 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
         )
             ->name('executions.enroll-trainee')
             ->middleware(['ability:manage_executions']);
+
+        Route::post(
+            'executions/assign-trainee-module',
+            AssignUserModuleController::class
+        );
     });
 });
