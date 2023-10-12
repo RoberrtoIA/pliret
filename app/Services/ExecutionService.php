@@ -30,6 +30,15 @@ class ExecutionService
         return $execution;
     }
 
+    public function assignTrainer(Execution $execution, User $user)
+    {
+        $this->roleService->validateTrainerRole($user);
+
+        $execution->trainers()->attach($user);
+
+        return $execution;
+    }
+
     public function updateExecution(
         FormRequest $request,
         Execution $execution

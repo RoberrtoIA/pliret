@@ -30,6 +30,14 @@ class Execution extends Model
             ->using(Enrollment::class);
     }
 
+    public function trainers()
+    {
+        return $this->belongsToMany(User::class, 'trainers')
+            ->as('trainer')
+            ->withPivot('active', 'created_at')
+            ->using(Trainer::class);
+    }
+
     public function assignments()
     {
         return $this->hasMany(Assignment::class);

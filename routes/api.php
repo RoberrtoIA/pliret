@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\Execution\AssignUserModuleController;
+use App\Http\Controllers\V1\Execution\ExecutionAssignTrainerController;
 use App\Http\Controllers\V1\Execution\ExecutionEnrollTraineeController;
 use App\Http\Controllers\V1\ExecutionController;
 use App\Http\Controllers\V1\Program\ProgramAssignDeveloperController;
@@ -79,6 +80,11 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
         Route::get(
             'programs/{program}/assign-developer/{developer}',
             ProgramAssignDeveloperController::class
+        );
+
+        Route::get(
+            'executions/{execution}/assign-trainer/{trainer}',
+            ExecutionAssignTrainerController::class
         );
     });
 });
