@@ -34,12 +34,16 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
             ->middleware(['ability:manage_user_accounts']);
 
         Route::resource('executions', ExecutionController::class)
-            ->only(['index', 'show', 'store'])
+            ->only(['index', 'show'])
             ->middleware([
                 'ability:manage_executions'
                     . ',see_program_content_details'
                     . ',see_program_content'
             ]);
+
+        Route::resource('executions', ExecutionController::class)
+            ->only(['store', 'update', 'destroy'])
+            ->middleware(['ability:manage_executions']);
 
         Route::resource('programs', ProgramController::class)
             ->only(['store', 'update', 'destroy'])
