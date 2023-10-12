@@ -21,4 +21,12 @@ class Execution extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function enrollments()
+    {
+        return $this->belongsToMany(User::class, 'enrollments')
+            ->as('enrollment')
+            ->withPivot('score', 'active', 'created_at')
+            ->using(Enrollment::class);
+    }
 }

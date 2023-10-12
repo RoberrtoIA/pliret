@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\Execution;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ExecutionService
@@ -18,6 +19,15 @@ class ExecutionService
         $data = $request->validated();
 
         return Execution::create($data);
+    }
+
+    public function enrollTrainee(Execution $execution, User $user)
+    {
+        $this->roleService->validateTraineeRole($user);
+
+        $execution->enrollments()->attach($user);
+
+        return $execution;
     }
 
     public function updateExecution(
