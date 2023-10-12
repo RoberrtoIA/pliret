@@ -5,6 +5,7 @@ use App\Http\Controllers\V1\ExecutionController;
 use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
 use App\Http\Controllers\V1\User\CreateTraineeAccountController;
+use App\Http\Controllers\V1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -56,8 +57,8 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
                     . ',add_program_content'
             ]);
 
-        // Route::resource('users', UserController::class)
-        //     ->only(['index', 'show', 'update', 'destroy'])
-        //     ->middleware(['ability:manage_user_accounts']);
+        Route::resource('users', UserController::class)
+            ->only(['index', 'show', 'update', 'destroy'])
+            ->middleware(['ability:manage_user_accounts']);
     });
 });
