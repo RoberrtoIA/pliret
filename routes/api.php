@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\ExecutionController;
+use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
 use App\Http\Controllers\V1\User\CreateTraineeAccountController;
 use Illuminate\Http\Request;
@@ -38,6 +39,17 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
                 'ability:manage_executions'
                     . ',see_program_content_details'
                     . ',see_program_content'
+            ]);
+
+        Route::resource('programs', ProgramController::class)
+            ->only(['store', 'update', 'destroy'])
+            ->middleware(['ability:manage_programs']);
+
+        Route::resource('programs', ProgramController::class)
+            ->only(['index', 'show'])
+            ->middleware([
+                'ability:manage_programs'
+                    . ',add_program_content'
             ]);
     });
 });
