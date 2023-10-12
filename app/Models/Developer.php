@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Developer extends Model
+class Developer extends Pivot
 {
     protected $table = 'developers';
 

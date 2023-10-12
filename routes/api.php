@@ -4,6 +4,7 @@ use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\Execution\AssignUserModuleController;
 use App\Http\Controllers\V1\Execution\ExecutionEnrollTraineeController;
 use App\Http\Controllers\V1\ExecutionController;
+use App\Http\Controllers\V1\Program\ProgramAssignDeveloperController;
 use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
 use App\Http\Controllers\V1\User\CreateTraineeAccountController;
@@ -73,6 +74,11 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
         Route::post(
             'executions/assign-trainee-module',
             AssignUserModuleController::class
+        );
+
+        Route::get(
+            'programs/{program}/assign-developer/{developer}',
+            ProgramAssignDeveloperController::class
         );
     });
 });
