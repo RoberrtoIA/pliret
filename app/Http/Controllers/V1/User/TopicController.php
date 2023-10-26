@@ -39,14 +39,14 @@ class TopicController extends Controller
         return new TopicResource($topic->load(['module', 'questions']));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Topic $topic)
     {
-        //
+        $topic->delete();
+
+        $response = [
+            'message' => 'Topic Deleted'
+        ];
+
+        return response($response, 200);
     }
 }
