@@ -10,6 +10,7 @@ use App\Http\Controllers\V1\Program\ProgramAssignDeveloperController;
 use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
 use App\Http\Controllers\V1\User\CreateTraineeAccountController;
+use App\Http\Controllers\V1\User\QuestionController;
 use App\Http\Controllers\V1\User\TopicController;
 use App\Http\Controllers\V1\UserController;
 use Illuminate\Http\Request;
@@ -76,6 +77,14 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
             ->middleware(['ability:add_program_content']);
 
         Route::resource('topics', TopicController::class)
+            ->only(['index', 'show'])
+            ->middleware(['ability:add_program_content']);
+
+        Route::resource('questions', QuestionController::class)
+            ->only(['store', 'update', 'destroy'])
+            ->middleware(['ability:add_program_content']);
+
+        Route::resource('questions', QuestionController::class)
             ->only(['index', 'show'])
             ->middleware(['ability:add_program_content']);
 
