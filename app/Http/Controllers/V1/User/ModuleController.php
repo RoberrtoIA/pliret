@@ -38,14 +38,14 @@ class ModuleController extends Controller
         return new ModuleResource($module->load('program'));
     }
 
-    // public function destroy(Module $module)
-    // {
-    //     $module->delete();
+    public function destroy(Module $module)
+    {
+        $module->delete();
 
-    //     $response = [
-    //         'message' => 'Module Deleted'
-    //     ];
+        $response = [
+            'message' => 'Module Deleted'
+        ];
 
-    //     return response($response, 200);
-    // }
+        return response($response, 200);
+    }
 }
