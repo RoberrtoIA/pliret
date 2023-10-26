@@ -5,6 +5,7 @@ use App\Http\Controllers\V1\Execution\AssignUserModuleController;
 use App\Http\Controllers\V1\Execution\ExecutionAssignTrainerController;
 use App\Http\Controllers\V1\Execution\ExecutionEnrollTraineeController;
 use App\Http\Controllers\V1\ExecutionController;
+use App\Http\Controllers\V1\ModuleController;
 use App\Http\Controllers\V1\Program\ProgramAssignDeveloperController;
 use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
@@ -60,6 +61,10 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
                 'ability:manage_programs'
                     . ',add_program_content'
             ]);
+
+        Route::resource('modules', ModuleController::class)
+            ->only(['store', 'update', 'destroy'])
+            ->middleware(['ability:add_program_content']);
 
         Route::resource('users', UserController::class)
             ->only(['index', 'show', 'update', 'destroy'])
