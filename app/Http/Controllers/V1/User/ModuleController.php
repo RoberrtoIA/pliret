@@ -24,10 +24,10 @@ class ModuleController extends Controller
         return (new ModuleResource($module->load('program')))->response()->setStatusCode(201);
     }
 
-    // public function show(Module $module)
-    // {
-    //     return new ModuleResource($module->load(['topics.questions.grades', 'evaluation_criteria.grades', 'program', 'assignments']));
-    // }
+    public function show(Module $module)
+    {
+        return new ModuleResource($module->load(['topics.questions.grades', 'evaluation_criteria.grades', 'program', 'assignments']));
+    }
 
     // public function update(Module $module, UpdateModuleRequest $request)
     // {
