@@ -39,14 +39,14 @@ class QuestionController extends Controller
         return new QuestionResource($question->load('topic'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Question $question)
     {
-        //
+        $question->delete();
+
+        $response = [
+            'message' => 'Question Deleted'
+        ];
+
+        return response($response, 200);
     }
 }
