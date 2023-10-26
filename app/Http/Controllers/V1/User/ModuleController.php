@@ -29,14 +29,14 @@ class ModuleController extends Controller
         return new ModuleResource($module->load(['topics.questions.grades', 'evaluation_criteria.grades', 'program', 'assignments']));
     }
 
-    // public function update(Module $module, UpdateModuleRequest $request)
-    // {
-    //     $attributes = $request->validated();
+    public function update(Module $module, UpdateModuleRequest $request)
+    {
+        $attributes = $request->validated();
 
-    //     $module->update($attributes);
+        $module->update($attributes);
 
-    //     return new ModuleResource($module->load('program'));
-    // }
+        return new ModuleResource($module->load('program'));
+    }
 
     // public function destroy(Module $module)
     // {
