@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTopicRequest;
+use App\Http\Requests\UpdateTopicRequest;
 use App\Http\Resources\TopicResource;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -24,27 +25,18 @@ class TopicController extends Controller
         return (new TopicResource($topic->load(['module', 'questions'])))->response()->setStatusCode(201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Topic $topic)
     {
-        //
+        return new TopicResource($topic->load(['module', 'questions']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Topic $topic, UpdateTopicRequest $request)
     {
-        //
+        $attributes = $request->validated();
+
+        $topic->update($attributes);
+
+        return new TopicResource($topic->load(['module', 'questions']));
     }
 
     /**
