@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\Assignment\SaveEvaluationCriteriaController;
 use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\EvaluationCriteriaController;
 use App\Http\Controllers\V1\Execution\AssignUserModuleController;
@@ -97,6 +98,10 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
         Route::resource('evaluations', EvaluationCriteriaController::class)
             ->only(['index', 'show'])
             ->middleware(['ability:add_program_content']);
+
+        Route::put('assignments/save-evaluation-criteria', SaveEvaluationCriteriaController::class)
+            ->name('assignments.save-evaluation-criteria')
+            ->middleware(['ability:take_homework']);
 
 
         Route::resource('users', UserController::class)
