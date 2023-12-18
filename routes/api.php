@@ -10,6 +10,7 @@ use App\Http\Controllers\V1\Program\ProgramAssignDeveloperController;
 use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\User\CreateEmployeeAccountController;
 use App\Http\Controllers\V1\User\CreateTraineeAccountController;
+use App\Http\Controllers\V1\User\EvaluationCriteriaController;
 use App\Http\Controllers\V1\User\QuestionController;
 use App\Http\Controllers\V1\User\TopicController;
 use App\Http\Controllers\V1\UserController;
@@ -87,6 +88,16 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
         Route::resource('questions', QuestionController::class)
             ->only(['index', 'show'])
             ->middleware(['ability:add_program_content']);
+
+
+        Route::resource('evaluations', EvaluationCriteriaController::class)
+            ->only(['store', 'update', 'destroy'])
+            ->middleware(['ability:add_program_content']);
+
+        Route::resource('evaluations', EvaluationCriteriaController::class)
+            ->only(['index', 'show'])
+            ->middleware(['ability:add_program_content']);
+
 
         Route::resource('users', UserController::class)
             ->only(['index', 'show', 'update', 'destroy'])
