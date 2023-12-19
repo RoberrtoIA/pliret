@@ -169,33 +169,33 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
             ->name('assignments.interview-start')
             ->middleware(['ability:take_quiz']);
 
-        // Route::post(
-        //     'assignments/{assignment}/interview-finish',
-        //     InterviewFinishController::class
-        // )
-        //     ->name('assignments.interview-finish')
-        //     ->middleware(['ability:take_quiz']);
+        Route::post(
+            'assignments/{assignment}/interview-finish',
+            InterviewFinishController::class
+        )
+            ->name('assignments.interview-finish')
+            ->middleware(['ability:take_quiz']);
 
-        // Route::post(
-        //     'assignments/{assignment}/homework-start',
-        //     HomeworkStartController::class
-        // )
-        //     ->name('assignments.homework-start')
-        //     ->middleware(['ability:take_homework']);
+        Route::post(
+            'assignments/{assignment}/homework-start',
+            HomeworkStartController::class
+        )
+            ->name('assignments.homework-start')
+            ->middleware(['ability:take_homework']);
 
-        // Route::post(
-        //     'assignments/{assignment}/homework-finish',
-        //     HomeworkFinishController::class
-        // )
-        //     ->name('assignments.homework-finish')
-        //     ->middleware(['ability:take_homework']);
+        Route::post(
+            'assignments/{assignment}/homework-finish',
+            HomeworkFinishController::class
+        )
+            ->name('assignments.homework-finish')
+            ->middleware(['ability:take_homework']);
 
-        // Route::post(
-        //     'assignments/{assignment}/homework-solution',
-        //     HomeworkSolutionController::class
-        // )
-        //     ->name('assignments.homework-solution')
-        //     ->middleware(['ability:take_homework']);
+        Route::post(
+            'assignments/{assignment}/homework-solution',
+            HomeworkSolutionController::class
+        )
+            ->name('assignments.homework-solution')
+            ->middleware(['ability:take_homework']);
 
         Route::get(
             'programs/{program}/assign-developer/{developer}',
