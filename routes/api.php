@@ -4,12 +4,10 @@ use App\Http\Controllers\V1\ExportTraineeProgressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\V1\UserController;
 use App\Http\Controllers\V1\ModuleController;
-use App\Http\Controllers\V1\GradingController;
 use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\ExecutionController;
 use App\Http\Controllers\V1\EvaluationCriteriaController;
-use App\Http\Controllers\V1\Assignment\SaveQuestionController;
 use App\Http\Controllers\V1\Assignment\HomeworkStartController;
 use App\Http\Controllers\V1\Assignment\HomeworkFinishController;
 use App\Http\Controllers\V1\Assignment\InterviewStartController;
@@ -23,6 +21,7 @@ use App\Http\Controllers\V1\Program\ProgramAssignDeveloperController;
 use App\Http\Controllers\V1\Execution\ExecutionAssignTrainerController;
 use App\Http\Controllers\V1\Execution\ExecutionEnrollTraineeController;
 use App\Http\Controllers\V1\Assignment\SaveEvaluationCriteriaController;
+use App\Http\Controllers\V1\Assignment\SaveQuestionController;
 use App\Http\Controllers\V1\User\QuestionController;
 use App\Http\Controllers\V1\User\TopicController;
 
@@ -98,9 +97,9 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
             ->name('assignments.save-evaluation-criteria')
             ->middleware(['ability:take_homework']);
 
-        // Route::put('assignments/save-question', SaveQuestionController::class)
-        //     ->name('assignments.save-question')
-        //     ->middleware(['ability:take_quiz']);
+        Route::put('assignments/save-question', SaveQuestionController::class)
+            ->name('assignments.save-question')
+            ->middleware(['ability:take_quiz']);
 
         // Route::resource('gradings', GradingController::class)
         //     ->only(['destroy'])
@@ -138,9 +137,9 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
             ->only(['store', 'update', 'destroy'])
             ->middleware(['ability:manage_executions']);
 
-        // Route::get('executions/finish/{execution}', FinishExecutionController::class)
-        //     ->name('executions.finish')
-        //     ->middleware(['ability:manage_executions']);
+        Route::get('executions/finish/{execution}', FinishExecutionController::class)
+            ->name('executions.finish')
+            ->middleware(['ability:manage_executions']);
 
         Route::get(
             'executions/{execution}/assign-trainer/{trainer}',
@@ -163,12 +162,12 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
             ->name('executions.assign-trainee-module')
             ->middleware(['ability:manage_executions']);
 
-        // Route::post(
-        //     'assignments/{assignment}/interview-start',
-        //     InterviewStartController::class
-        // )
-        //     ->name('assignments.interview-start')
-        //     ->middleware(['ability:take_quiz']);
+        Route::post(
+            'assignments/{assignment}/interview-start',
+            InterviewStartController::class
+        )
+            ->name('assignments.interview-start')
+            ->middleware(['ability:take_quiz']);
 
         // Route::post(
         //     'assignments/{assignment}/interview-finish',

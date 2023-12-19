@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Models\Execution;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Execution;
+use App\Events\ExecutionFinished;
+use App\Http\Resources\ProgramResource;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ExecutionService
 {
-    public function __construct(protected UserRoleService $roleService)
-    {
+    public function __construct(protected UserRoleService $roleService) {
     }
 
     public function createExecution(FormRequest $request): Execution
@@ -21,12 +23,33 @@ class ExecutionService
         return Execution::create($data);
     }
 
-    public function enrollTrainee(Execution $execution, User $user)
+    public function updateExecution(
+        FormRequest $request,
+        Execution $execution
+    ): Execution {
+        $data = $request->validated();
+        $execution->update($data);
+
+        return $execution;
+    }
+
+    public function finishExecution(Execution $execution): Execution
     {
-        $this->roleService->validateTraineeRole($user);
+        $execution->finished = Carbon::now();
+        $execution->save();
 
-        $execution->enrollments()->attach($user);
+        ExecutionFinished::dispatch($execution);
 
+        return $execution;
+    }
+
+    public function takeProgramSnapshot(Execution $execution): Execution
+    {
+        $execution->program_execution_content = (new ProgramResource(
+            $execution->program()->with('modules.topics')->first()
+        ))
+            ->resolve();
+        $execution->save();
         return $execution;
     }
 
@@ -39,12 +62,11 @@ class ExecutionService
         return $execution;
     }
 
-    public function updateExecution(
-        FormRequest $request,
-        Execution $execution
-    ): Execution {
-        $data = $request->validated();
-        $execution->update($data);
+    public function enrollTrainee(Execution $execution, User $user)
+    {
+        $this->roleService->validateTraineeRole($user);
+
+        $execution->enrollments()->attach($user);
 
         return $execution;
     }
