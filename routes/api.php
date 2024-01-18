@@ -39,12 +39,12 @@ use App\Http\Controllers\V1\User\TopicController;
 
 Route::name('api.v1.')->prefix('v1')->group(function () {
 
-    Route::post('login', [AuthController::class, 'login'])->name('login');
-
-    Route::get('social/{driver}/login', [AuthController::class, 'socialLogin'])
-        ->name('social.login');
-
     Route::group(['middleware' => ['auth:sanctum']], function () {
+
+        Route::post('login', [AuthController::class, 'login'])->name('login');
+
+        Route::get('social/{driver}/login', [AuthController::class, 'socialLogin'])
+            ->name('social.login');
 
         Route::get('report/{id}', ExportTraineeProgressController::class)
         ->middleware(['ability:see_program_content_details'])
