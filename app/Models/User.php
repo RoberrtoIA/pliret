@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
-
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -44,5 +43,29 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function myExecutionsAsTrainer()
+    {
+        return $this->belongsToMany(Execution::class, 'trainers')
+            ->as('trainer')
+            ->withPivot('active', 'created_at')
+            ->using(Trainer::class);
+    }
+
+    public function myExecutionsAsTrainee()
+    {
+        return $this->belongsToMany(Execution::class, 'enrollments')
+            ->as('enrollment')
+            ->withPivot('score', 'active', 'created_at')
+            ->using(Enrollment::class);
+    }
+
+    public function myProgramsAsDeveloper()
+    {
+        return $this->belongsToMany(Program::class, 'developers')
+            ->as('developer')
+            ->withPivot('active', 'created_at')
+            ->using(Developer::class);
     }
 }

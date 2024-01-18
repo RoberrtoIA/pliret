@@ -3,7 +3,6 @@
 use App\Http\Controllers\V1\ExportTraineeProgressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\V1\UserController;
-use App\Http\Controllers\V1\ModuleController;
 use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\ExecutionController;
@@ -22,6 +21,7 @@ use App\Http\Controllers\V1\Execution\ExecutionAssignTrainerController;
 use App\Http\Controllers\V1\Execution\ExecutionEnrollTraineeController;
 use App\Http\Controllers\V1\Assignment\SaveEvaluationCriteriaController;
 use App\Http\Controllers\V1\Assignment\SaveQuestionController;
+use App\Http\Controllers\V1\User\ModuleController;
 use App\Http\Controllers\V1\User\QuestionController;
 use App\Http\Controllers\V1\User\TopicController;
 
