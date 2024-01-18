@@ -2,7 +2,7 @@
 
 **Proyecto de graduación**
 
-Esta API proporciona una API RESTful para evaluar el desempeño de los empleados de una empresa. La API está construida con Laravel 9 y utiliza tokens de acceso para la autenticación y autorización.
+Esta API proporciona una API RESTful para evaluar el desempeño en conocimiento tecnico de los empleados de una empresa. La API está construida con Laravel 9 y utiliza tokens de acceso para la autenticación y autorización.
 
 ## Objetivos
 
