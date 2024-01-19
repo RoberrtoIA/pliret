@@ -24,6 +24,7 @@ class ModuleResource extends JsonResource
             'homework_content' => $this->homework_content,
             'program' => new ProgramResource($this->whenLoaded('program')),
             'topics' => TopicResource::collection($this->whenLoaded('topics')),
+            'evaluation_criteria' => EvaluationCriteriaResource::collection($this->whenLoaded('evaluation_criteria')),
             'created_at' => $this->whenNotNull($this->created_at ?? null),
             'updated_at' => $this->whenNotNull($this->updated_at ?? null),
             'deleted_at' => $this->whenNotNull($this->deleted_at ?? null),
