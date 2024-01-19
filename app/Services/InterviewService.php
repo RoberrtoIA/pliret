@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Assignment;
 use App\Events\GradeUpdated;
 use App\Events\InterviewStarted;
+use App\Events\InterviewFinished;
 use App\Http\Resources\ModuleResource;
 
 class InterviewService
@@ -24,6 +25,8 @@ class InterviewService
     {
         $assignment->interview_finish_at = Carbon::now()->toDateTimeString();;
         $assignment->save();
+
+        InterviewFinished::dispatch($assignment);
 
         return $assignment;
     }
