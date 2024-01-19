@@ -21,7 +21,7 @@ class ProgramFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'description' => fake()->text(),
-            'content' => fake()->paragraphs(asText: true),
+            'content' => fake()->paragraphs(asText:true),
         ];
     }
 }

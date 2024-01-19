@@ -15,23 +15,34 @@ class Assignment extends Model
         'execution_id', 'module_id', 'user_id',
     ];
 
-    public function gradings()
-    {
+    protected $casts = [
+        'homework_snapshot' => 'array',
+        'interview_snapshot' => 'array',
+    ];
+
+    public function gradings() {
         return $this->hasMany(Grading::class);
     }
 
-    public function module()
-    {
+    public function homeworkGradings() {
+        return $this->hasMany(Grading::class)
+            ->where('gradable_type', EvaluationCriteria::class);
+    }
+
+    public function interviewGradings() {
+        return $this->hasMany(Grading::class)
+            ->where('gradable_type', Question::class);
+    }
+
+    public function module() {
         return $this->belongsTo(Module::class);
     }
 
-    public function user()
-    {
+    public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function execution()
-    {
+    public function execution() {
         return $this->belongsTo(Execution::class);
     }
 }

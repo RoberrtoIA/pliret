@@ -17,4 +17,10 @@ class EvaluationCriteria extends Model
     {
         return $this->belongsTo(Module::class);
     }
+
+    public function grades()
+    {
+        return $this->morphMany(Grading::class, 'gradable');
+    }
+
 }

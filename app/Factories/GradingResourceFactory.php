@@ -4,7 +4,6 @@ namespace App\Factories;
 
 use App\Http\Resources\EvaluationCriteriaResource;
 use App\Http\Resources\QuestionResource;
-use App\Models\Question;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Resources\Json\JsonResource;
 

@@ -38,6 +38,7 @@ class RoleSeeder extends Seeder
             ->sync([
                 Ability::create(['name' => 'see_program_content'])->id,
                 Ability::create(['name' => 'see_grading_content'])->id,
+                Ability::create(['name' => 'upload_homework'])->id,
             ]);
     }
 }

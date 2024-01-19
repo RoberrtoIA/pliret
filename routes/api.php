@@ -6,7 +6,6 @@ use App\Http\Controllers\V1\UserController;
 use App\Http\Controllers\V1\ProgramController;
 use App\Http\Controllers\V1\Auth\AuthController;
 use App\Http\Controllers\V1\ExecutionController;
-use App\Http\Controllers\V1\EvaluationCriteriaController;
 use App\Http\Controllers\V1\Assignment\HomeworkStartController;
 use App\Http\Controllers\V1\Assignment\HomeworkFinishController;
 use App\Http\Controllers\V1\Assignment\InterviewStartController;
@@ -21,6 +20,7 @@ use App\Http\Controllers\V1\Execution\ExecutionAssignTrainerController;
 use App\Http\Controllers\V1\Execution\ExecutionEnrollTraineeController;
 use App\Http\Controllers\V1\Assignment\SaveEvaluationCriteriaController;
 use App\Http\Controllers\V1\Assignment\SaveQuestionController;
+use App\Http\Controllers\V1\User\EvaluationCriteriaController;
 use App\Http\Controllers\V1\User\ModuleController;
 use App\Http\Controllers\V1\User\QuestionController;
 use App\Http\Controllers\V1\User\TopicController;
@@ -196,7 +196,7 @@ Route::name('api.v1.')->prefix('v1')->group(function () {
             HomeworkSolutionController::class
         )
             ->name('assignments.homework-solution')
-            ->middleware(['ability:take_homework']);
+            ->middleware(['ability:upload_homework']);
 
         Route::get(
             'programs/{program}/assign-developer/{developer}',
