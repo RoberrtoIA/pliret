@@ -48,7 +48,7 @@ Se requieren PHP 8.1+, Composer y MySQL 8+.
 Clona el proyecto e instala las dependencias.
 
 ```bash
-git clone https://gitlab.com/applaudo-php-tp-2022/final-project
+git clone https://github.com/RoberrtoIA/pliret
 cd final-project
 composer install
 ```
